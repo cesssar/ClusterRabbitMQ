@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+
+  rabbit1:
+    image: rabbitmq:4-management-alpine
+    hostname: rabbit2
+    container_name: rabbit2
+    environment:
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS}
+      - CLUSTERED=true
+      - RABBITMQ_ERLANG_COOKIE=${RABBITMQ_ERLANG_COOKIE}
+    volumes:
+      - ./data/mnesia/:/var/lib/rabbitmq
+    ports:
+      - 15672:15672
+      - 5672:5672
+      - 4369:4369
+      - 25672:25672
+    networks:
+      rabbitnet:
+        ipv4_address: 10.5.0.2
+    extra_hosts:
+      - rabbit1:${NODE1}
+      - rabbit3:${NODE3}
+
+networks:
+  rabbitnet:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 10.5.0.0/16
+         gateway: 10.5.0.1

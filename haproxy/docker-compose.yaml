@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+
+  haproxy_rabbit:
+    image: haproxy:lts-alpine3.21
+    container_name: haproxy_rabbit
+    hostname: haproxy_rabbit
+    ports:
+      - 15672:15672
+      - 5672:5672
+      - 1963:1963
+    network_mode: "default"
+    volumes:
+      - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
