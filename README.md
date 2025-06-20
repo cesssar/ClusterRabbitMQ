@@ -145,11 +145,98 @@ php receber.php
 
 ---
 
+## 🐍 Estrutura do Projeto Python
+
+A pasta python/ contém um projeto de serviço Python para conexão com o cluster RabbitMQ:
+
+```
+python/
+├── envia.py                 # Exemplo para enviar mensagens
+├── recebe.py                # Exemplo para receber mensagens (consumir)
+└── requirements.txt         # Dependências do projeto Python
+```
+
+### ⚙️ Como Rodar o Exemplo Python
+
+É altamente recomendado usar um ambiente virtual para seus projetos Python. Isso ajuda a isolar as dependências de cada projeto, evitando conflitos com outras instalações Python no seu sistema.
+
+Criando e Ativando um Ambiente Virtual
+   
+1. Navegue até a pasta python/:
+
+```bash
+cd python/
+```
+
+2. Crie o ambiente virtual:
+
+```bash
+python3 -m venv venv
+```
+
+3. Ative o ambiente virtual:
+
+- No Linux/macOS:
+
+```bash
+source venv/bin/activate
+```
+
+- No Windows (Prompt de Comando):
+
+```bash
+venv\Scripts\activate.bat
+```
+
+- No Windows (PowerShell):
+
+```bash
+venv\Scripts\Activate.ps1
+```
+
+Você verá (venv) no início da sua linha de comando, indicando que o ambiente virtual está ativo.
+
+### Instalando as Dependências
+
+Com o ambiente virtual ativado, instale as dependências listadas no arquivo requirements.txt:
+
+```bash
+pip install -r requirements.txt
+```
+
+### Configuração
+
+Lembre-se de ajustar o arquivo .env na raiz do seu projeto Python (se ainda não existir, crie-o) para apontar para o seu cluster RabbitMQ:
+
+```
+RABBITMQ_HOST=192.168.122.200
+RABBITMQ_PORT=5672
+RABBITMQ_USER=mqadmin
+RABBITMQ_PASSWORD=Admsdvcein12a3XX
+```
+
+### Executando os Exemplos
+
+Com o ambiente virtual ativado e as dependências instaladas:
+
+- Para enviar uma mensagem:
+
+```bash
+python envia.py
+```
+
+- Para consumir (receber) a primeira mensagem da fila:
+
+```bash
+python recebe.py
+```
+
+---
+
 ## 📌 Observações
 
-- A classe `RabbitMQService.php` implementa métodos para conectar, enviar e consumir mensagens, lendo configurações do `.env`.
-- Ajuste os parâmetros do `.env` conforme seu ambiente.
 - A comunicação via HAProxy garante balanceamento e alta disponibilidade.
+- Ajuste os parâmetros do .env conforme seu ambiente para ambos os projetos (PHP e Python).
 
 ---
 
@@ -158,3 +245,4 @@ php receber.php
 - Docker & Docker Compose para o cluster RabbitMQ
 - Java para testes de performance (PerfTest)
 - PHP 8.4.8 com Composer para executar os exemplos PHP
+- Python 3 (versão compatível com as dependências no requirements.txt)

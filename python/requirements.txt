@@ -1,0 +1,3 @@
+pika
+pyrabbit
+python-dotenv
