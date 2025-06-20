@@ -153,7 +153,10 @@ A pasta python/ contém um projeto de serviço Python para conexão com o cluste
 python/
 ├── envia.py                 # Exemplo para enviar mensagens
 ├── recebe.py                # Exemplo para receber mensagens (consumir)
-└── requirements.txt         # Dependências do projeto Python
+├── .env                     # Arquivo de configuração com dados de conexão
+├── requirements.txt         # Dependências do projeto Python
+└── src/
+    └── rabbitmq_service.py  # Classe Python para conexão, envio e recebimento
 ```
 
 ### ⚙️ Como Rodar o Exemplo Python
