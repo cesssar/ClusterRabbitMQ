@@ -5,6 +5,7 @@ services:
   haproxy_rabbit:
     image: haproxy:lts-alpine3.21
     container_name: haproxy_rabbit
+    restart: always
     hostname: haproxy_rabbit
     ports:
       - 15672:15672

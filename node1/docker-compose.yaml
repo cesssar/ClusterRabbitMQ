@@ -6,6 +6,7 @@ services:
     image: rabbitmq:4-management-alpine
     hostname: rabbit1
     container_name: rabbit1
+    restart: always
     environment:
       - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER}
       - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS}

@@ -2,10 +2,11 @@ version: '3'
 
 services:
 
-  rabbit1:
+  rabbit3:
     image: rabbitmq:4-management-alpine
     hostname: rabbit3
     container_name: rabbit3
+    restart: always
     environment:
       - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER}
       - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS}
